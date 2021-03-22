@@ -1,17 +1,13 @@
-%global fixcflags       -fomit-frame-pointer -fno-exceptions -fno-asynchronous-unwind-tables %xtra_fixcflags -Os -g3 -Werror-implicit-function-declaration -Wno-unused -Wno-switch
+%global fixcflags       -fomit-frame-pointer -fno-exceptions -fno-asynchronous-unwind-tables %xtra_fixcflags -Os -g3 -Werror-implicit-function-declaration -Wno-unused -Wno-switch -fPIE
 %global basemakeflags   prefix=%pkglibdir BINDIR=%{_bindir} MAN1DIR=%{_mandir}/man1 CFLAGS="$RPM_OPT_FLAGS %fixcflags $XTRA_CFLAGS" PDIET=%pkglibdir STRIP=:
 
 %global pkglibdir       /usr/lib/dietlibc
 
-%ifarch x86_64
 %bcond_without          ssp
-%else
-%bcond_with             ssp
-%endif
 
 Name:           dietlibc
 Version:        0.34
-Release:        2
+Release:        3
 Summary:        A libc optimized for small size
 License:        GPLv2
 URL:            http://www.fefe.de/dietlibc/
@@ -93,5 +89,8 @@ ulimit -m $[ 128*1024 ] -v $[ 256*1024 ] -d $[ 128*1024 ] -s 512
 %doc %{_mandir}/*/*
 
 %changelog
+* Fri Mar 19 2021 wutao <wutao61@huawei.com> - 0.34-3
+- add fstack-protector-strong and fPIE flags
+
 * Thu Feb 27 2020 zhouyihang<zhouyihang1@huawei.com> - 0.34-2
 - Package init
