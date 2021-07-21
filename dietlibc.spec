@@ -11,7 +11,7 @@
 
 Name:           dietlibc
 Version:        0.34
-Release:        2
+Release:        3
 Summary:        A libc optimized for small size
 License:        GPLv2
 URL:            http://www.fefe.de/dietlibc/
@@ -22,7 +22,7 @@ Patch0001:      dietlibc-insecure-defpath.patch
 
 Obsoletes:      dietlibc-lib < %{version}-%{release}
 
-BuildRequires:  gcc gdb
+BuildRequires:  gcc
 
 Requires:       %{name}-devel = %{version}-%{release}
 
@@ -93,5 +93,8 @@ ulimit -m $[ 128*1024 ] -v $[ 256*1024 ] -d $[ 128*1024 ] -s 512
 %doc %{_mandir}/*/*
 
 %changelog
+* Wed Jul 21 2021 lingsheng <lingsheng@huawei.com> - 0.34-3
+- Remove unnecessary buildrequire gdb
+
 * Thu Feb 27 2020 zhouyihang<zhouyihang1@huawei.com> - 0.34-2
 - Package init
