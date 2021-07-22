@@ -7,7 +7,7 @@
 
 Name:           dietlibc
 Version:        0.34
-Release:        3
+Release:        4
 Summary:        A libc optimized for small size
 License:        GPLv2
 URL:            http://www.fefe.de/dietlibc/
@@ -18,7 +18,7 @@ Patch0001:      dietlibc-insecure-defpath.patch
 
 Obsoletes:      dietlibc-lib < %{version}-%{release}
 
-BuildRequires:  gcc gdb
+BuildRequires:  gcc
 
 Requires:       %{name}-devel = %{version}-%{release}
 
@@ -89,6 +89,9 @@ ulimit -m $[ 128*1024 ] -v $[ 256*1024 ] -d $[ 128*1024 ] -s 512
 %doc %{_mandir}/*/*
 
 %changelog
+* Wed Jul 21 2021 lingsheng <lingsheng@huawei.com> - 0.34-4
+- Remove unnecessary buildrequire gdb
+
 * Fri Mar 19 2021 wutao <wutao61@huawei.com> - 0.34-3
 - add fstack-protector-strong and fPIE flags
 
