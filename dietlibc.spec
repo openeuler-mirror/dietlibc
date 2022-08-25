@@ -1,4 +1,4 @@
-%global fixcflags       -fomit-frame-pointer -fno-exceptions -fno-asynchronous-unwind-tables %xtra_fixcflags -Os -g3 -Werror-implicit-function-declaration -Wno-unused -Wno-switch -fPIE -Wl,-z,now
+%global fixcflags       -fomit-frame-pointer -fno-exceptions -fno-asynchronous-unwind-tables %xtra_fixcflags -Os -g3 -Werror-implicit-function-declaration -Wno-unused -Wno-switch -fPIE -Wl,-z,relro -Wl,-z,now
 %global basemakeflags   prefix=%pkglibdir BINDIR=%{_bindir} MAN1DIR=%{_mandir}/man1 CFLAGS="$RPM_OPT_FLAGS %fixcflags $XTRA_CFLAGS" PDIET=%pkglibdir STRIP=:
 
 %global pkglibdir       /usr/lib/dietlibc
@@ -11,7 +11,7 @@
 
 Name:           dietlibc
 Version:        0.34
-Release:        4
+Release:        5
 Summary:        A libc optimized for small size
 License:        GPLv2
 URL:            http://www.fefe.de/dietlibc/
@@ -93,6 +93,9 @@ ulimit -m $[ 128*1024 ] -v $[ 256*1024 ] -d $[ 128*1024 ] -s 512
 %doc %{_mandir}/*/*
 
 %changelog
+* Wed Aug 24 2022 caodongxia <caodongxia@h-partners.com> -0.34-5
+- Add relro flags
+
 * Tue Sep 07 2021 lingsheng <lingsheng@huawei.com> - 0.34-4
 - Add BIND_NOW and PIE flags
 
