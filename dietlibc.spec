@@ -11,7 +11,7 @@
 
 Name:           dietlibc
 Version:        0.34
-Release:        5
+Release:        6
 Summary:        A libc optimized for small size
 License:        GPLv2
 URL:            http://www.fefe.de/dietlibc/
@@ -19,6 +19,7 @@ Source0:        https://www.fefe.de/dietlibc/%{name}-%{version}.tar.xz
 Source1:        http://www.fefe.de/dietlibc/%{name}-%{version}.tar.xz.sig
 
 Patch0001:      dietlibc-insecure-defpath.patch
+Patch0002:      dietlibc-fix-cc.patch
 
 Obsoletes:      dietlibc-lib < %{version}-%{release}
 
@@ -93,6 +94,9 @@ ulimit -m $[ 128*1024 ] -v $[ 256*1024 ] -d $[ 128*1024 ] -s 512
 %doc %{_mandir}/*/*
 
 %changelog
+* Thu Apr 13 2023 SaltyFruit <saltyfruit255@gmail.com> - 0.34-6
+- Fix CC compiler support and CFLAGS error
+
 * Sat Dec 03 2022 Ge Wang <wangge20@h-partners.com> - 0.34-5
 - Add RELRO flags
 

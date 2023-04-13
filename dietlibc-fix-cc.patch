@@ -1,0 +1,20 @@
+--- a/Makefile	2018-02-11 02:27:23.000000000 +0800
++++ b/Makefile	2023-04-11 13:41:02.377320181 +0800
+@@ -8,7 +8,7 @@
+ BINDIR=${prefix}/bin
+ MAN1DIR=${prefix}/man/man1
+
+-EXTRACFLAGS=
++EXTRACFLAGS=-fno-builtin-bcmp
+
+ MYARCH:=$(shell uname -m | sed -e 's/i[4-9]86/i386/' -e 's/armv[3-7]t\?e\?[lb]/arm/')
+
+@@ -120,7 +120,7 @@
+ CFLAGS=$(DEFAULTCFLAGS)
+ CROSS=
+
+-CC=gcc
++
+ CCC=$(CROSS)$(CC)
+ STRIP=$(COMMENT) $(CROSS)strip
+ INC=-I. -isystem include
